@@ -1,4 +1,4 @@
-import { ILoginFormState } from "@/interfaces/auth"
+import { ILoginFormState, IUserInfo } from "@/interfaces/auth"
 import { apiHandler } from "../api-handler";
 
 export const userLogin = async (formState: ILoginFormState) => {
@@ -9,7 +9,7 @@ export const userLogin = async (formState: ILoginFormState) => {
     })
 
     try {
-        return await apiHandler<{ token: string }>({
+        return await apiHandler<{ token: string, adminData: IUserInfo }>({
             endpoint: "/api/login",
             method: "POST",
             body: formData,

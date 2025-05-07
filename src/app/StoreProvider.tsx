@@ -8,5 +8,5 @@ export function StoreProvider({
 }: {
     children: React.ReactNode
 }) {
-    return <Provider store={store()}>{children}</Provider>
+    return <Provider store={store}>{children}</Provider>
 }

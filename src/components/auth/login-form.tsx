@@ -1,13 +1,13 @@
 "use client";
 
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { loginSchema, loginSchemaType } from "@/validation/auth-schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { loginAction } from "@/app/(auth)/login/page";
-import { useTransition } from "react";
+import { loginAction } from "@/app/(auth)/login/actions";
 import { useAppDispatch } from "@/lib/slice-hooks";
 import { login } from "@/lib/features/auth/auth-slice";
 import { useRouter } from "next/navigation";
@@ -49,8 +49,8 @@ const LoginForm = () => {
     const onSubmit = async (formState: loginSchemaType) => {
         startTransition(async () => {
             const result = await loginAction(formState);
-            if (result.success) {
-                dispatch(login(result.data));
+            if (result.token) {
+                dispatch(login(result));
                 router.push("/");
             } else {
                 setError("root", { message: result.error });

@@ -9,14 +9,13 @@ interface IUserInfoState {
     }
 }
 
-
-
 const initialState: IUserInfoState = {
     userInfo: {
         token: null,
         adminData: null
     }
 }
+
 const authSlice = createSlice({
     name: "auth",
     initialState,

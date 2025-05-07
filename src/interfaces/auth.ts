@@ -11,6 +11,8 @@ export interface IUserInfo {
     gender: string,
     address: string,
     image: null,
-    clinic_id: 2,
-    role_id: 1,
+    clinic_id: number,
+    role_id: number,
+    created_at: string,
+    updated_at: string,
 };
